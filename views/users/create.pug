@@ -1,0 +1,25 @@
+extends ../layouts/common.pug
+
+block content
+	h1 Create User
+
+	form(action="/users/create", method="POST", enctype="multipart/form-data")
+		.form-group
+			label(for="name") Name:
+			input#name.form-control(type="text", name="name" value= valuesInput ? valuesInput.name : "")
+			if errors
+				if errors.name
+					small.text-danger #{errors.name}
+		
+		.form-group
+			label(for="phone") Phone:
+			input#phone.form-control(type="text", name="phone" value= valuesInput ? valuesInput.phone : "")
+			if errors
+				if errors.phone
+					small.text-danger #{errors.phone}
+		
+		.form-group
+			label(for="avatar") Avatar:
+			input#avatar.form-control-file(type="file", name="avatar" )
+			
+		button.btn.btn-primary Create
